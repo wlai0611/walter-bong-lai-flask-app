@@ -1,0 +1,56 @@
+swagger : "2.0"
+info:
+  description: The swagger file for the API
+  version: "1.0.0"
+  title: The API
+consumes: 
+  - "application/json"
+produces:
+  - "application/json"
+basePath: /api
+definitions:
+  PredictRequestBody:
+    type: array
+    items:
+      type: string
+      description: YouTube comments to classify
+      example: "sample comment here"
+paths:
+  /predict:
+    post:
+      operationId: "spam_classifier.predict"
+      tags:
+        - "spam_classifier"
+      summary: "YouTube Comments Spam Classifier Prediction Endpoint"
+      description: "Generate ham/spam predictions based on input comments"
+      parameters:
+        - in: body
+          name: body
+          description: "requred array"
+          required: true
+          schema:
+            $ref: "#/definitions/PredictRequestBody"      
+      responses:
+        200: 
+          description: "success"
+          schema:
+            type: object
+            properties: 
+              predictions:
+                type: array
+                description: "integer values indicating spam or ham where 1 is spam and 0 is ham"
+                items:
+                  type: integer
+                  example: 1
+            required:
+              - predictions
+        400:
+          description: "prediction failed"
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "prediction failed :("
+
+                    
