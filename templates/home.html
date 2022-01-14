@@ -30,12 +30,35 @@
 				context.clearRect(0, 0, canvas.width, canvas.height);
 			}
 		</script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 		<script>
 			function displayImage(){
 				canvas = document.getElementById("imageView");
-				imageAsBytes = canvas.toDataURL()
+				imageAsBytes = canvas.toDataURL();
+				//https://stackoverflow.com/questions/43645790/passing-javascript-variable-to-python-flask
+				var data = {'byteString':imageAsBytes};
+				/*
+				$.ajax({
+					url: "{{url_for('picture')}}",
+					type: 'POST',
+					data: imageAsBytes,   // converts js value to JSON string
+					})
+					.done(function(result){     // on success get the return object from server
+						console.log(result)     // do whatever with it. In this case see it in console
+				})
+				*/
+				$.ajax({
+					url: "{{url_for('picture')}}",
+					type: 'POST',
+					data: {imageBase64: imageAsBytes},   // converts js value to JSON string
+					})
+					.done(function(result){     // on success get the return object from server
+						console.log(result)     // do whatever with it. In this case see it in console
+				})
+				/*
 				imageDisplayer = document.getElementById("drawnImage");
 				imageDisplayer.setAttribute('src',imageAsBytes)
+				*/
 			}
 		</script>
 	</body>

@@ -5,3 +5,4 @@ https://dev.opera.com/articles/html5-canvas-painting/ and this nice tutorial on 
 clear HTML Canvas: https://www.w3docs.com/snippets/javascript/how-to-clear-the-canvas-for-redrawing.html
 really easy to follow description of Flask endpoints:
 https://stackoverflow.com/questions/19261833/what-is-an-endpoint-in-flask
+https://stackoverflow.com/questions/43645790/passing-javascript-variable-to-python-flask
