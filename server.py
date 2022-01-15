@@ -6,6 +6,7 @@ import re
 import base64
 import io
 from PIL import Image
+import time
 
 app = connexion.App(__name__, specification_dir="./")
 app.add_api("swagger.yml")
@@ -45,6 +46,8 @@ def picture():
     swapColorAndHeight = np.swapaxes(imgarr,0,2) 
     swapHeightAndWidth =  np.swapaxes(swapColorAndHeight,1,2)
     layerWithDrawing = swapHeightAndWidth[3]
+    currentSecond = str(time.time()).split(".")[0]
+    pickle.dump(layerWithDrawing,open(f"C:\\Users\\Walter\\Desktop\\datascience\\pickledArrays\\arr{currentSecond}.pickle","wb"))
     return str(layerWithDrawing[layerWithDrawing>0])
 
 if __name__ == "__main__":
