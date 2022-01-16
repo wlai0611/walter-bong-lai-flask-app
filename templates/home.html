@@ -19,7 +19,7 @@
 			<button onclick= "clearCanvas()" >Clear Canvas</button>
 			<button onclick="displayImage()">Classify</button>
 			<br>
-			<img id="drawnImage"></img>
+			<p id="result"></p>
 		</div>
 		<script src="{{url_for('static', filename='drawingBoard.js')}}"></script>
 		
@@ -53,7 +53,8 @@
 					data: {imageBase64: imageAsBytes},   // converts js value to JSON string
 					})
 					.done(function(result){     // on success get the return object from server
-						console.log(result)     // do whatever with it. In this case see it in console
+						//console.log(result)     // do whatever with it. In this case see it in console
+						document.getElementById("result").innerHTML = "You drew a "+result; 
 				})
 				/*
 				imageDisplayer = document.getElementById("drawnImage");

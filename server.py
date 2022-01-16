@@ -24,9 +24,9 @@ def interface():
 
 def loadModel():
     if "loaded_model" not in LOCAL_CACHE:
-        LOCAL_CACHE["loaded_model"] = pickle.load(open("svm_clf.pickle","rb"))
+        LOCAL_CACHE["loaded_model"] = pickle.load(open("./model/svm_clf.pickle","rb"))
     if "pca" not in LOCAL_CACHE:
-        LOCAL_CACHE["pca"] = pickle.load(open("pca.pickle","rb"))
+        LOCAL_CACHE["pca"] = pickle.load(open("./model/pca.pickle","rb"))
 
 @app.route("/pictureDemo", methods = ["POST"])
 def picture():
